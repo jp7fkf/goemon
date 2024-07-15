@@ -1,0 +1,82 @@
+title: Output Traffic Viewer
+devices:
+  - name: router1
+    ip_address: 192.168.0.1
+    port: 161
+    community: public
+    interfaces:
+      - name: "ge-0/0/0"
+        position_x: 1
+        position_y: 7
+      - name: "ge-0/0/1"
+        position_x: 13
+        position_y: 8
+      - name: "ge-0/0/2"
+        position_x: 1
+        position_y: 11
+  - name: router2
+    ip_address: 192.168.0.2
+    port: 161
+    community: public
+    interfaces:
+      - name: "ge-0/0/0"
+        position_x: 31
+        position_y: 7
+      - name: "ge-0/0/1"
+        position_x: 20
+        position_y: 10
+      - name: "ge-0/0/2"
+        position_x: 31
+        position_y: 11
+  - name: router3
+    ip_address: 192.168.0.3
+    port: 161
+    community: public
+    interfaces:
+      - name: "GigabitEthernet0/0/0/0"
+        position_x: 1
+        position_y: 12
+      - name: "GigabitEthernet0/0/0/1"
+        position_x: 13
+        position_y: 13
+      - name: "GigabitEthernet0/0/0/2"
+        position_x: 1
+        position_y: 16
+  - name: router4
+    ip_address: 192.168.0.4
+    port: 161
+    community: public
+    interfaces:
+      - name: "GigabitEthernet0/0/0/0"
+        position_x: 31
+        position_y: 12
+      - name: "GigabitEthernet0/0/0/1"
+        position_x: 20
+        position_y: 15
+      - name: "GigabitEthernet0/0/0/2"
+        position_x: 31
+        position_y: 16
+map: |
+    |                 │                 |
+    |           ┌─────┴─────┐           |
+    |           │  AS65001  │           |
+    |           └─────┬─────┘           |
+    |                 │                 |
+    |            ┌────┴────┐            |
+    |      ┌─────┤ Switch0 ├─────┐      |
+    |      │     └─────────┘     │      |
+    | ┌────┴───┐             ┌───┴────┐ |
+    | │router1 ├─────────────┤router2 │ |
+    | └────┬───┘             └───┬────┘ |
+    |      │                     │      |
+    |      │                     │      |
+    | ┌────┴───┐             ┌───┴────┐ |
+    | │router3 ├─────────────┤router4 │ |
+    | └────┬───┘             └───┬────┘ |
+    |      │     ┌─────────┐     │      |
+    |      └─────┤ Switch1 ├─────┘      |
+    |            └────┬────┘            |
+    |                 │                 |
+    |             ┌───┴───┐             |
+    |             │router5│             |
+    |             └───────┘             |
