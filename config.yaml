@@ -9,7 +9,7 @@ devices:
         position_x: 1
         position_y: 7
       - name: "ge-0/0/1"
-        position_x: 13
+        position_x: 12
         position_y: 8
       - name: "ge-0/0/2"
         position_x: 1
@@ -20,13 +20,13 @@ devices:
     community: public
     interfaces:
       - name: "ge-0/0/0"
-        position_x: 31
+        position_x: 30
         position_y: 7
       - name: "ge-0/0/1"
-        position_x: 20
+        position_x: 19
         position_y: 10
       - name: "ge-0/0/2"
-        position_x: 31
+        position_x: 30
         position_y: 11
   - name: router3
     ip_address: 192.168.0.3
@@ -37,7 +37,7 @@ devices:
         position_x: 1
         position_y: 12
       - name: "GigabitEthernet0/0/0/1"
-        position_x: 13
+        position_x: 12
         position_y: 13
       - name: "GigabitEthernet0/0/0/2"
         position_x: 1
@@ -48,13 +48,13 @@ devices:
     community: public
     interfaces:
       - name: "GigabitEthernet0/0/0/0"
-        position_x: 31
+        position_x: 30
         position_y: 12
       - name: "GigabitEthernet0/0/0/1"
-        position_x: 20
+        position_x: 19
         position_y: 15
       - name: "GigabitEthernet0/0/0/2"
-        position_x: 31
+        position_x: 30
         position_y: 16
 map: |
     |                 │                 |
