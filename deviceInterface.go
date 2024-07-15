@@ -10,6 +10,8 @@ import (
 	"github.com/jroimartin/gocui"
 )
 
+const trafficValueLength = 6
+
 type deviceInterface struct {
 	name             string
 	OutputTrafficBps float64
@@ -21,8 +23,6 @@ type deviceInterface struct {
 }
 
 func NewDeviceInterface(gui *gocui.Gui, name string, positionX int, positionY int) *deviceInterface {
-	const trafficValueLength = 6
-
 	v, err := gui.SetView(name+"_"+strconv.Itoa(positionX)+"_"+strconv.Itoa(positionY), positionX, positionY, positionX+trafficValueLength+1, positionY+2)
 	if err != nil && err != gocui.ErrUnknownView {
 		log.Panicln(err)
@@ -38,22 +38,19 @@ func NewDeviceInterface(gui *gocui.Gui, name string, positionX int, positionY in
 }
 
 func (i *deviceInterface) Update(newOutOctets uint64, getTime time.Time) {
+	i.view.Clear()
 	if i.lastOctets != 0 {
 		if i.lastOctets == newOutOctets {
-			if getTime.Sub(i.lastGetDateime).Seconds() > 25 {
+			if getTime.Sub(i.lastGetDateime).Seconds() > 10 {
 				i.OutputTrafficBps = 0
-				hOutTraffic, unit := hmnize.ComputeSI(i.OutputTrafficBps)
-				i.view.Clear()
-				fmt.Fprintf(i.view, "%5.1f%s", hOutTraffic, unit)
 			}
 		} else {
 			i.OutputTrafficBps = float64(newOutOctets-i.lastOctets) * 8 / getTime.Sub(i.lastGetDateime).Seconds()
 		}
 		hOutTraffic, unit := hmnize.ComputeSI(i.OutputTrafficBps)
-		i.view.Clear()
 		fmt.Fprintf(i.view, "%5.1f%s", hOutTraffic, unit)
 	} else {
-		i.view.Clear()
+		// init state
 		fmt.Fprintf(i.view, " - ")
 	}
 
