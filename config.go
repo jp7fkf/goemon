@@ -6,7 +6,7 @@ import (
 )
 
 type Config struct {
-	Title   string         `yaml:"title" default:"go-snmpview - Traffic Viewer"`
+	Title   string         `yaml:"title" default:"goemon - Traffic Viewer"`
 	Map     string         `yaml:"map" default:""`
 	Devices []DeviceConfig `yaml:"devices"`
 }

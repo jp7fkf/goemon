@@ -1,4 +1,4 @@
-module github.com/jp7fkf/go-snmpview
+module github.com/jp7fkf/goemon
 
 go 1.16
 
